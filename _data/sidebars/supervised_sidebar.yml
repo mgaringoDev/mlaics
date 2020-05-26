@@ -1,0 +1,102 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+
+entries:
+- title: Sidebar
+  product: Supervised Learning
+  version: 
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Getting Started Intro
+    output: web, pdf
+    folderitems:
+    - title: Overview
+      url: /supervised_intro.html
+      output: web  
+
+    - title: Gradient Decent
+      url: /supervised_regression_gradientDescent.html
+      output: web, pdf  
+
+    - title: Regularization
+      url: /supervised_regression_regularization.html
+      output: web, pdf
+
+  - title: Regression
+    output: web, pdf
+
+    folderitems: 
+    - title: Overview
+      url: /supervised_regression_intro.html
+      output: web, pdf
+
+    - title: Linear
+      url: /supervised_regression_linear_hub.html
+      output: web, pdf
+
+    - title: Ordinary Least Squares
+      url: /supervised_regression_ols.html
+      output: web, pdf      
+
+  - title: Algo A
+    output: web, pdf
+
+    folderitems: 
+    - title: Overview
+      url: /404.html
+      output: web, pdf
+
+      subfolders:
+      - title: Sub Algo A
+        output: web
+        subfolderitems:
+
+        - title: Notes
+          url: /404.html
+          output: web, pdf
+
+        - title: Implement
+          url: /404.html
+          output: web, pdf
+
+        - title: Cheatsheets
+          url: /404.html
+          output: web, pdf
+
+        - title: Ref
+          url: /404.html
+          output: web, pdf
+
+      subfolders:
+      - title: Sub Algo B
+        output: web
+        subfolderitems:
+
+        - title: Notes
+          url: /404.html
+          output: web, pdf
+
+        - title: Implement
+          url: /404.html
+          output: web, pdf
+
+        - title: Cheatsheets
+          url: /404.html
+          output: web, pdf
+
+        - title: Ref
+          url: /404.html
+          output: web, pdf

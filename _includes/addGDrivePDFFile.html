@@ -1,0 +1,11 @@
+{% if page.gDrivePDFile%}
+<div id="pdf">
+   <h1>PDF</h1>
+   <a href="https://drive.google.com/file/d/{{page.gDrivePDFile}}/preview">View It Here</a>
+   <object data="https://drive.google.com/file/d/{{page.gDrivePDFile}}/preview"  width="750px" height="750px">
+      <iframe src="https://drive.google.com/file/d/{{page.gDrivePDFile}}/preview" >
+         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://drive.google.com/file/d/{{page.gDrivePDFile}}/preview">Download PDF</a>.</p>
+      </iframe>
+   </object>
+<div>    
+{% endif %}

@@ -1,0 +1,54 @@
+{% if {{include.mlType}} %}
+   {% assign courseTag = {{include.mlType}} %}
+   {% assign courseSection = {{include.infoType}} %}
+{% endif %}
+
+{% assign tagType = {{include.tag}} %}
+{% assign isCourse = false %}
+{% assign isSection = false %}
+
+<table>
+   <thead>
+      <tr>
+         <th>Title</th>            
+         <th>Summary</th>
+      </tr>
+   </thead>
+   <tbody>      
+		<!-- Loop through the pages -->   		
+      {% for page in site.pages %}
+      
+      	<!-- Loop through the tags -->
+      	{% for tag in page.tags %}
+
+      	<!-- Check if tag is there -->
+		{% if tag == tagType %}
+		{% assign isTagType = true %}
+		{% endif %}
+
+		{% endfor %} 
+
+		<!-- Check if course tag is there -->
+		{% if page.mlType contains courseTag %}
+		  {% assign isCourse = true %}
+		{% endif %}
+
+		<!-- Check if section tag is there -->
+		{% if page.infoType contains courseSection %}
+		  {% assign isSection = true %}
+		{% endif %}
+
+
+		<!-- If all is there create a table -->
+      {% if isTagType and isCourse and isSection %}
+      <tr>
+         <td><a href="{{ page.url | remove: "/" }}">{{page.title}}</a></td>
+         <td>{% if page.summary %} {{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
+      </tr>
+      {% endif %}  
+
+      {% assign isCourse = false %}    
+      {% assign isSection = false %}
+      {% endfor %}      
+   </tbody>
+</table>

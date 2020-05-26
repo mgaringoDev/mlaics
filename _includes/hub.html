@@ -1,0 +1,71 @@
+{% if site.output == "pdf" %}
+{{site.data.alerts.note}} The content on this page doesn't display well on PDF, but I included it anyway so you could see the problems this layout poses if you're including it in PDF.  {{site.data.alerts.end}}
+{% endif %}
+<div class="filter-options">
+   <button class="btn btn-primary" data-group="all">All</button>
+   <button class="btn btn-primary" data-group="notes">Notes</button>
+   <button class="btn btn-primary" data-group="impl">Implementation</button>
+   <button class="btn btn-primary" data-group="red">Ref</button>   
+</div>
+<div id="grid" class="row">
+   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["notes"]'>
+      <div class="panel panel-default">
+         <div class="panel-heading">Notes</div>
+         <div class="panel-body">
+            Pages contains all notes pertaining to this algorithm. 
+            <ul>
+               {% for page in site.pages %}
+               {% for tag in page.mlType %}
+               {% if tag == {{include.algoType}} %}
+               {% for type in page.infoType %}
+               {% if type == "note" %}
+               <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+               {% endif %}
+               {% endfor %}
+               {% endif %}
+               {% endfor %}
+               {% endfor %} 
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["impl"]'>
+      <div class="panel panel-default">
+         <div class="panel-heading">Implementation</div>
+         <div class="panel-body">
+            Pages contains all implementation pertaining to this algorithm.
+            <ul>
+               {% for page in site.pages %}
+               {% for tag in page.mlType %}
+               {% if tag == {{include.algoType}} %}
+               {% for type in page.infoType %}
+               {% if type == "implementation" %}
+               <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+               {% endif %}
+               {% endfor %}
+               {% endif %}
+               {% endfor %}
+               {% endfor %} 
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["ref"]'>
+      <div class="panel panel-default">
+         <div class="panel-heading">References</div>
+         <div class="panel-body">                        
+           {% for page in site.pages %}
+           {% for tag in page.mlType %}
+           {% if tag == {{include.algoType}} %}
+           {% for type in page.infoType %}
+           {% if type == "ref" %}
+           <div markdown="1">{{page.content}}</div>
+           {% endif %}
+           {% endfor %}
+           {% endif %}
+           {% endfor %}
+           {% endfor %}         
+         </div>
+      </div>
+   </div>
+</div>

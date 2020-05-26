@@ -1,0 +1,103 @@
+<div style="border-style: groove;padding: 50px 50px 50px 50px;">
+<!-- ######################################################################### -->
+{% assign notebookadress = page.notebookfilename %}
+{% assign projectFolder = page.folder %}
+
+{% capture Notebook %}
+{% for cell in site.data.jupyterNotebooks.[notebookadress].cells %}
+{% case cell.cell_type %}
+
+{% when 'markdown' %}
+
+{% if cell.metadata.cellType == "FrontMatter"%}
+
+{% else %}
+<!-- -------------------------- -->
+{{ cell.source }}
+<!-- -------------------------- -->
+{% endif %}
+
+
+
+<!-- {{ cell.source }} -->
+
+<!-- ************************* This is when the cell is a code ************************* -->
+<!-- *********************************************************************************** -->
+{% when 'code' %}
+
+{% highlight python %}
+{{ cell.source }}
+{% endhighlight %}
+
+{% for output in cell.outputs %}
+
+<!-- *************** Showing the python output of the code  ********************** -->
+{% if output contains "name"%}
+{% highlight python%}
+{{ output.text }}
+{% endhighlight %}
+<!-- ***************************************************************************** -->
+{% else %}
+
+<!-- *************** Showing the python image of the code  ********************** -->
+{% if output contains "data"%}
+{% assign imageString = output.data %}
+{% assign stringSplit =imageString| split:"=>" %}
+
+{% if stringSplit[0] contains "image/" %}
+{% assign imagetype = stringSplit[0]| remove: "{" %}
+{% assign imagetype = imagetype| split:'"' %}
+
+{% assign imagedata = stringSplit[1]| split: "," %}
+{% assign imagedataTemp = imagedata[0]| split:'"'%}
+{% assign imagedataTempArray = imagedataTemp|replace:"\\n"," "| split: ","%}
+{% assign imagedataTempArray = imagedataTempArray[1] %}
+{% assign imagedataTempArray = imagedataTempArray|remove:"]"| split:'"' %}
+
+<img src="data:{{imagetype}};base64, {{ imagedataTempArray }}">
+
+{% endif %}
+<!-- ***************************************************************************** -->
+
+{% endif %}
+
+{% endif %}
+
+{% endfor %}
+
+
+<!-- *************** Showing the python table of the code  ********************** -->
+{% for output in cell.outputs[0].data  %}
+
+{% if output[0] contains "text/html"%}
+<div class="scrollable">
+{{output[1]}}
+</div>
+{% endif %}
+
+{% if output[0] contains "text/plain"%}
+
+{% highlight python%}
+{{output[1]}}
+{% endhighlight %}
+
+{% endif %}
+
+{% endfor %}
+<!-- ***************************************************************************** -->
+
+
+
+<!-- ***************************************************************************** -->
+
+{% endcase %}
+
+{% endfor %}
+{% endcapture %}
+
+
+<!-- ######################################################################### -->
+
+{{ Notebook | markdownify }}
+
+</div>

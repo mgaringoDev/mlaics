@@ -1,0 +1,48 @@
+{% if page.gDriveDoc or page.gDrivePDFile or page.gDriveSheets or page.gDriveSlide or page.pdfFile%}
+<ul id="profileTabs" class="nav nav-tabs">
+	{% if page.gDriveDoc %}
+	<li class="active"><a href="#gDocShow" data-toggle="tab">gDoc</a></li>
+	{% endif %}
+
+	{% if page.gDrivePDFile%}
+	<li ><a href="#gPDFShow" data-toggle="tab">gPDF</a></li>
+	{% endif %}
+
+	{% if page.gDriveSheets%}
+	<li ><a href="#gSheetShow" data-toggle="tab">gSheet</a></li>
+	{% endif %}
+
+
+	{% if page.gDriveSlide%}
+	<li ><a href="#gSlideShow" data-toggle="tab">gSlide</a></li>
+	{% endif %}
+
+	{% if page.pdfFile%}
+	<li ><a href="#pdfShow" data-toggle="tab">pdf</a></li>
+	{% endif %}
+</ul>
+    
+    
+<div class="tab-content">
+   <div role="tabpanel" class="tab-pane active" id="gDocShow">
+   	{% include addGDriveDocFile.html %}      
+   </div>
+
+   <div role="tabpanel" class="tab-pane" id="gPDFShow">
+   {% include addGDrivePDFFile.html %}   
+   </div>
+   
+   <div role="tabpanel" class="tab-pane" id="gSheetShow">
+   {% include addGDriveSheetsFile.html %}   
+   </div>
+
+   <div role="tabpanel" class="tab-pane" id="gSlideShow">
+    {% include addGDriveSlideFile.html %}  
+   </div>
+
+   <div role="tabpanel" class="tab-pane" id="pdfShow">
+    {% include addPDFFile.html %}      
+   </div>
+</div>
+
+{% endif %}

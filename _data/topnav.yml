@@ -1,0 +1,45 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+
+# These are single links
+topnav:
+- title: Topnav
+  items:    
+    - title: FeatureReduction
+      url: /featureReduction_intro.html
+    - title: ModelValidation
+      url: /modelValidation_intro.html    
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:        
+    - title: LearningTypes
+      folderitems:        
+        - title: Supervised
+          url: /supervised_intro.html
+        - title: Unsupervised
+          url: /unsupervised_intro.html
+        - title: Reinforcement
+          url: /reinforcement_intro.html        
+        - title: Semi-supervised
+          url: /semisupervised_intro.html
+    - title: CheatSheet
+      folderitems:        
+        - title: Jekyll Theme
+          url: /mydoc_index.html
+        - title: Data Visualization
+          url: /dataVis_index.html
+        - title: Pandas
+          url: /pandas_index.html
+        - title: Numpy
+          url: /numpy_index.html
+    - title: Classes
+      folderitems:        
+        - title: Data School 
+          url: /classes_dataSchool.html
+        - title: sentdex
+          url: /classes_sentdex.html
+        - title: YouTube
+          url: /classes_youtube.html
+        

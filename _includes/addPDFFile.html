@@ -1,0 +1,11 @@
+{% if page.pdfFile%}
+<div id="pdf">
+   <h1>PDF</h1>
+   <a href="{{page.pdfFile}}">View It Here</a>
+   <object data="{{page.pdfFile}}" type="application/pdf" width="750px" height="750px">
+      <embed src="{{page.pdfFile}}" type="application/pdf">
+         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="{{page.pdfFile}}">Download PDF</a>.</p>
+      </embed>
+   </object>
+<div>    
+{% endif %}    
