@@ -51,6 +51,14 @@ entries:
       url: /supervised_regression_ols.html
       output: web, pdf      
 
+  - title: ANN
+    output: web, pdf
+
+    folderitems: 
+    - title: Overview
+      url: /supervised_ann_intro.html
+      output: web, pdf    
+
   - title: Algo A
     output: web, pdf
 
