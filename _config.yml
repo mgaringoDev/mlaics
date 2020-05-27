@@ -124,3 +124,11 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 
 
 github: [metadata]
+
+plugins: ['jekyll/scholar']
+
+# the styles can be found here: https://github.com/citation-style-language/styles
+scholar:  
+  style: _bibliography/ieee.csl
+  bibliography: mybib.bib
+  bibliography_template: bib

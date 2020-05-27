@@ -80,6 +80,10 @@ entries:
     output: web, pdf
 
     folderitems:
+    - title: Bibliography
+      url: /mydoc_bib.html
+      output: web, pdf
+
     - title: Tooltips
       url: /mydoc_adding_tooltips.html
       output: web, pdf

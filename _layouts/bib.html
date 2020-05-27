@@ -1,0 +1,36 @@
+<div class="text-justify">
+    {{reference}}
+</div>
+
+{% if entry.note %}
+<div>
+    <em>{{ entry.note }}</em>
+</div>
+{% endif %}
+
+<div>
+    {% if entry.pdf %}
+    <button type="button" class="btn btn-danger"><a href="{{ entry.pdf }}" style="color:white;">PDF</a></button>    
+    {% endif %}
+
+    {% if entry.extra %}
+    <button type="button" class="btn btn-danger"><a href="https://drive.google.com/file/d/{{entry.extra}}/preview" style="color:white;">PDF</a></button>    
+    {% endif %}
+
+    {% if entry.url %}
+    <button type="button" class="btn btn-primary"><a href="{{entry.url}}" style="color:white;">url</a></button>    
+    {% endif %}
+
+    {% if entry.doi %}
+    <button type="button" class="btn btn-warning"><a href="{{ entry.doi | prepend: 'http://doi.org/' }}" style="color:black;">DOI</a></button>    
+    {% endif %}
+
+    {% if entry.hal_id %}
+    <button type="button" class="btn btn-dark"><a href="{{ entry.hal_id | prepend: 'http://hal.inria.fr/' }}" style="color:white;">HAL</a></button>    
+    {% endif %}
+
+    
+</div>
+
+
+<!-- <div><pre>{{ entry.bibtex }}</pre></div> -->
