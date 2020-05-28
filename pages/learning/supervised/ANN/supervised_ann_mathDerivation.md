@@ -2,7 +2,7 @@
 title: Mathematical Derivation of ANN
 sidebar: supervised_sidebar
 permalink: supervised_ann_mathDerivation.html
-mlType: ann
+mlType: mlp
 infoType: note
 folder: learning
 ---
@@ -367,23 +367,4 @@ b^{(2)} = b^{(2)}_{old} - learningrate * \frac{\partial C}{\partial b^{(2)}}
 $$
 
 
-### References
-{{site.data.alerts.ref}}
-
-- [Notes on Backpropagation](https://www.ics.uci.edu/~pjsadows/notes.pdf)
-- [Machine Learning Cheat Sheet](https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html#applying-the-chain-rule)
-- [NN Softmax Activation](https://stats.stackexchange.com/questions/273465/neural-network-softmax-activation)
-- [Backpropagation - softmac derivative](https://datascience.stackexchange.com/questions/32949/backpropagation-softmax-derivative)
-- [DeepNotes](https://deepnotes.io/softmax-crossentropy)
-- [Derivative of Softmax without cross entropy](https://math.stackexchange.com/questions/2843505/derivative-of-softmax-without-cross-entropy)
-- [The softmax function and its derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
-- [ML from scratch](http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/)
-- [Backpropagation with Softmax / Cross Entropy](https://stats.stackexchange.com/questions/235528/backpropagation-with-softmax-cross-entropy)
-- [Derivative of Softmax loss function](https://math.stackexchange.com/questions/945871/derivative-of-softmax-loss-function)
-- [How to implement softmax derivative](https://medium.com/@aerinykim/how-to-implement-the-softmax-derivative-independently-from-any-loss-function-ae6d44363a9d)
-
-{{site.data.alerts.end}}
-
-### bibtex 
- 
-{% include addRef.html %}
+{% include addRef.html %} 

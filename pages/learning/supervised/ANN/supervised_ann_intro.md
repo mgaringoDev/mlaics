@@ -14,6 +14,16 @@ folder: learning
 	- [ ] Stochastic Gradient Descent
 	- [ ] Hopfield Network
 	- [ ] Radial Basis Function Network (RBFN)
+- **Courses**
+	- Check google Drive Machine Learning Notes
+		- Neural Nets --> Courses Online
+			- [ ] Stanford CS231n
+			- [ ] Hugo Larochelle 
+- **ALGO SUB TYPES**
+	- I have already looked into the following and I just need to place them in here
+		- CNN
+		- RNN
+		- This should be inside ML-From-Scratch folder
 {{site.data.alerts.end}}
 
 ## General Overview of ANN

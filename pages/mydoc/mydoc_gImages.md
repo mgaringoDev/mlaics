@@ -22,7 +22,7 @@ Essentially do the follow:
 ***
 ## Copy Convert
 Use the input box below to copy a glink of the shared image and copy the markdown version of that image to be used to paste into a markdown compatible link image.
-<form id='myForm' action="/action_page.php">
+<form id='myForm'>
   <label for="gLink">gLink: </label>
   <input type="text" id="gLink" name="gLink"> <button onclick="myFunction()">Convert to MD</button>  
   <input type="reset" value="Reset">
