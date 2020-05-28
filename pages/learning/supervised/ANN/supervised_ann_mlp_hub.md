@@ -1,17 +1,19 @@
 ---
-title: Linear Regression Hub
+title: Multilayer Perceptrons (MLP)
 sidebar: supervised_sidebar
-permalink: supervised_regression_linear_hub.html
+permalink: supervised_ann_mlp_hub.html
 folder: learning
 ---
 
-{% include hub.html algoType="linearRegression" %}
+Some overview of the sub algo family.  
+
+{% include hub.html algoType="ann" %} 
 
 {{site.data.alerts.warning}}
 This page shows the polled content of pages with the following front matter
 
 ```yaml
-mlType: linearRegression
+mlType: ann
 infoType: note
 OR
 infoType: implementation

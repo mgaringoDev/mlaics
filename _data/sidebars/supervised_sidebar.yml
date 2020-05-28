@@ -59,52 +59,24 @@ entries:
       url: /supervised_ann_intro.html
       output: web, pdf    
 
-  - title: Algo A
+    - title: Multilayer Perceptrons (MLP)
+      url: /supervised_ann_mlp_hub.html
+      output: web, pdf    
+
+  - title: Algo Family A
     output: web, pdf
 
     folderitems: 
     - title: Overview
+      url: /supervised_subAlgoFamily_intro.html
+      output: web, pdf
+
+    - title: Algo Sub Family A HUB 1
       url: /404.html
       output: web, pdf
 
-      subfolders:
-      - title: Sub Algo A
-        output: web
-        subfolderitems:
+    - title: Algo Sub Family A HUB 2
+      url: /404.html
+      output: web, pdf
 
-        - title: Notes
-          url: /404.html
-          output: web, pdf
-
-        - title: Implement
-          url: /404.html
-          output: web, pdf
-
-        - title: Cheatsheets
-          url: /404.html
-          output: web, pdf
-
-        - title: Ref
-          url: /404.html
-          output: web, pdf
-
-      subfolders:
-      - title: Sub Algo B
-        output: web
-        subfolderitems:
-
-        - title: Notes
-          url: /404.html
-          output: web, pdf
-
-        - title: Implement
-          url: /404.html
-          output: web, pdf
-
-        - title: Cheatsheets
-          url: /404.html
-          output: web, pdf
-
-        - title: Ref
-          url: /404.html
-          output: web, pdf
+    

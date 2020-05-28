@@ -44,6 +44,10 @@ entries:
       url: /mydoc_pages.html
       output: web, pdf
 
+    - title: Pages - Learning
+      url: /mydoc_pagesLearning.html
+      output: web, pdf
+
     - title: Posts
       url: /mydoc_posts.html
       output: web, pdf
