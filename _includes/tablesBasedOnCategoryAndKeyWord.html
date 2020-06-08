@@ -1,0 +1,53 @@
+{% assign pageCategory = include.pageCategory %}
+{% assign pageType = include.pageType %}
+{% assign keyWord = include.keyWord %}
+
+<div class="datatable-begin"></div>
+<table>
+   <thead>
+      <tr>
+         <th>Title</th>            
+         <th>Summary</th>
+         <th>Tags/Key Words</th>
+         <th>Date</th>
+
+      </tr>
+   </thead>
+   <tbody>      
+		<!-- Loop through the pages -->   		
+      {% for post in site.posts %}
+      {% if post.category == pageCategory %}      
+      {% if post.type == pageType %}  
+      {% if post.keywords contains keyWord %}    
+
+      <tr>
+         <td><a href="{{ post.url | prepend: site.baseurl}}">{{post.title}}</a></td>
+         <td>{% if post.summary %} {{ post.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
+         <td>{{post.keywords}}</td>
+         <td>{{ post.date | date_to_string }}</td>
+      </tr>
+      
+      {% endif %}      
+      {% endif %}      
+      {% endif %}      
+      {% endfor %}      
+
+      {% for page in site.pages %}
+      {% if page.category == pageCategory %}      
+      {% if page.type == pageType %}
+      {% if page.keywords contains keyWord %}          
+
+      <tr>
+         <td><a href="{{ page.url | prepend: site.baseurl}}">{{page.title}}</a></td>
+         <td>{% if page.summary %} {{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
+         <td>{{page.keywords}}</td>
+         <td>{{ page.date | date_to_string }}</td>
+      </tr>
+      
+      {% endif %}      
+      {% endif %}      
+      {% endif %}      
+      {% endfor %}      
+   </tbody>
+</table>
+<div class="datatable-end"></div>

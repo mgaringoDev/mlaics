@@ -1,6 +1,7 @@
 {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
 
 <ul id="mysidebar" class="nav">
+  <li class="sidebarTitle" style="text-align: center;" ><img src="https://drive.google.com/uc?id=1O9_5qYCvCtyWOf9sqCbpqhkAhlXTUN3f" style="width:50%"></li>
   <li class="sidebarTitle">{{sidebar[0].product}} {{sidebar[0].version}}</li>
   {% for entry in sidebar %}
   {% for folder in entry.folders %}
@@ -13,12 +14,12 @@
           {% if folderitem.external_url %}
           <li><a title="{{folderitem.title}}" href="{{folderitem.external_url}}" target="_blank" rel="noopener">{{folderitem.title}}</a></li>
           {% elsif page.url == folderitem.url %}
-          <li class="active"><a title="{{folderitem.title}}" href="{{folderitem.url | remove: "/"}}">{{folderitem.title}}</a></li>
+          <li class="active"><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl | prepend: site.url}}">{{folderitem.title}}</a></li>
           {% elsif folderitem.type == "empty" %}
-          <li><a title="{{folderitem.title}}" href="{{folderitem.url | remove: "/"}}">{{folderitem.title}}</a></li>
+          <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl | prepend: site.url}}">{{folderitem.title}}</a></li>
 
           {% else %}
-          <li><a title="{{folderitem.title}}" href="{{folderitem.url | remove: "/"}}">{{folderitem.title}}</a></li>
+          <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl | prepend: site.url}}">{{folderitem.title}}</a></li>
           {% endif %}
           {% for subfolders in folderitem.subfolders %}
           {% if subfolders.output contains "web" %}
@@ -30,9 +31,9 @@
                   {% if subfolderitem.external_url %}
                   <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.external_url}}" target="_blank" rel="noopener">{{subfolderitem.title}}</a></li>
                   {% elsif page.url == subfolderitem.url %}
-                  <li class="active"><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li>
+                  <li class="active"><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl | prepend: site.url}}">{{subfolderitem.title}}</a></li>
                   {% else %}
-                  <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li>
+                  <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl | prepend: site.url}}">{{subfolderitem.title}}</a></li>
                   {% endif %}
                   {% endif %}
                   {% endfor %}

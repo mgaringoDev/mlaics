@@ -54,6 +54,44 @@
 
       {% assign isCourse = false %}    
       {% assign isSection = false %}
-      {% endfor %}      
+      {% endfor %}  
+
+
+      <!-- Loop through the posts -->        
+      {% for post in site.posts %}
+      
+         <!-- Loop through the tags -->
+         {% for tag in post.tags %}
+
+         <!-- Check if tag is there -->
+      {% if tag == tagType %}
+      {% assign isTagType = true %}
+      {% endif %}
+
+      {% endfor %} 
+
+      <!-- Check if course tag is there -->
+      {% if post.keywords contains courseTag %}
+        {% assign isCourse = true %}
+      {% endif %}
+
+      <!-- Check if section tag is there -->
+      {% if post.keywords contains courseSection %}
+        {% assign isSection = true %}
+      {% endif %}
+
+
+      <!-- If all is there create a table -->
+      {% if isTagType and isCourse and isSection %}
+      <tr>
+         <td><a href="{{ post.url | remove: "/" }}">{{post.title}}</a></td>
+         <td>{% if post.summary %} {{ post.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
+      </tr>
+      {% endif %}  
+
+      {% assign isCourse = false %}    
+      {% assign isSection = false %}
+      {% endfor %}   
+          
    </tbody>
 </table>

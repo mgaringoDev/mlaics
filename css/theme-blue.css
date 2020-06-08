@@ -14,7 +14,7 @@ h4 {color: #808080; }
 }
 
 .nav > li.active > a {
-    background-color: #347DBE;
+    background-color: #000000;
 }
 
 .nav > li > a:hover {
@@ -32,13 +32,13 @@ div.navbar-collapse .dropdown-menu > li > a:hover {
 }
 
 a[data-toggle="tooltip"] {
-    color: #337ab7;
+    color: #000000;
     font-style: italic;
     cursor: default;
 }
 
 .navbar-inverse {
-    background-color: #347DBE;
+    background-color: #000000;
     border-color: #015CAE;
 }
 .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
@@ -63,7 +63,7 @@ a.navbar-brand:hover {
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #248ec2 !important;
+    border-color: #000000 !important;
 }
 
 .btn-primary {

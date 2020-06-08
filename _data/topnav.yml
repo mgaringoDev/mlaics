@@ -42,4 +42,6 @@ topnav_dropdowns:
           url: /classes_sentdex.html
         - title: YouTube
           url: /classes_youtube.html
+        - title: Coursera
+          url: /classes_coursera.html
         

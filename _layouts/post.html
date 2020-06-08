@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default_post
 ---
 <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
 
@@ -25,7 +25,17 @@ layout: default
         <div class="summary">{{page.summary}}</div>
         {% endif %}
 
+        {% unless page.toc == false %}
+        {% include toc.html %}
+        {% endunless %}
+
         {{ content }}
+
+        {% include addGDrivePDFFile.html %}   
+        {% include addGDriveSheetsFile.html %}   
+        {% include addGDriveDocFile.html %}
+        {% include addGDriveSlideFile.html %}
+        {% include addPDFFile.html %} 
     </div>
 
 

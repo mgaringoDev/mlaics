@@ -1,4 +1,6 @@
 repository: tomjoht/documentation-theme-jekyll
+url:
+baseurl: 
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
@@ -18,7 +20,7 @@ footer_github: https://github.com/mgaringoDev/myOntarioCovidModelTrendAnalysis
 footer_projectSites: http://youeeg.net/mgProjectPages/
 footer_personalWebsite: https://mgaringodev.github.io/
 
-incremental: true
+incremental: false
 
 github_editme_path: 
 #github_editme_path: tomjoht/documentation-theme-jekyll/blob/gh-pages/
