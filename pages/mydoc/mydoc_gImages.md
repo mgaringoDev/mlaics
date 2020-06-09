@@ -31,9 +31,10 @@ Use the input box below to copy a glink of the shared image and copy the markdow
 
 <script>
 function myFunction() {
-	var glinkString;
+	var glinkString;    
   	glinkString = document.getElementById("myForm").elements[0].value;
-  	var newglinkString = glinkString.replace('open?id=','uc?id=');
+  	var newglinkString = glinkString.replace('file/d/','uc?id=');
+    newglinkString = newglinkString.replace('/view?usp=sharing','');
   	newglinkString = '![](' + newglinkString + ')'  	
   	document.getElementById("myForm").elements[0].value = newglinkString
 
