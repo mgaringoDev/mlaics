@@ -40,6 +40,10 @@ toc: false
 		- [ ] [How to work on your own machine learning projects (article)](https://towardsdatascience.com/how-to)
 		- [ ] Machine Learning a-z by kiril Eremanko on udemy
 
+- [ ] Tensor Flow Certification [video](https://www.youtube.com/watch?v=ya5NwvKafDk)
+
+- [ ] [AI Notes](https://www.deeplearning.ai/ai-notes/)
+
 - [ ] Search for a specific file in a directory.  
 	- check other project site for this.
 
