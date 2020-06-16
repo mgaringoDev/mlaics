@@ -9,14 +9,15 @@ sidebar: coursera_sidebar
 ---
 
 ## Neural Network Representation
-![](nnRep2)
+![](https://drive.google.com/uc?id=1X7bPRB36Xa4cP0f-OMTIxJmtdH5L4d_0)
 Previously we denote the features as X but for NN we typically use $$A^{[0]}$$ to denote the input layer.  Note that you don't count the input layer as part of the naming convention.  Only the number of hidden layers and the output layers.  When propagating through the NN you can think of it as applying regression algo over and over again.
+![](https://drive.google.com/uc?id=1oIHngm5wuP_FfKTo0cKQmmGknYLWagCK)
 
-![](nnRep3)
 
 
 ## Vectorizing
-![](nnRep4)
+![](https://drive.google.com/uc?id=1EkYTUhxC2jtt1m-1YNeO4dq5GTl24Xjf)
+
 > So, another way to think of this is that we have four logistic regression units there, and each of the logistic regression units, has a corresponding parameter vector, w. By stacking those four vectors together, you end up with this four by three matrix.
 
 This is called $$W^{[1]}$$ as weights of the first hidden layer.
@@ -26,11 +27,11 @@ This is called $$W^{[1]}$$ as weights of the first hidden layer.
 
 >  So, just a recap, we figured out that z_[1] is equal to w_[1] times the vector x plus the vector b_[1], and a_[1] is sigmoid times z_[1]., marked from 6 minutes 30 seconds till 6 minutes 42 secondsSo, just a recap, we figured out that z_[1] is equal to w_[1] times the vector x plus the vector b_[1], and a_[1] is sigmoid times z_[1].
 
-![](nnRep5)
+![](https://drive.google.com/uc?id=1806pw2k5qifiP9Oogjmf-as-J1iIRLC-)
 
 > this last upper unit is a lot like logistic regression, except that instead of writing the parameters as w and b, we're writing them as w_[2] and b_[2], with dimensions one by four and one by one.
 
-![](nnRep6)
+![](https://drive.google.com/uc?id=1B7piiGlCJG3WyW13-2H2EMbbuHX1hUWy)
 
 ```X``` is defined by horizontal concatenation of all the training samples.  Similarly, you can do that for $$Z^{[1]} , Z^{[1]} , Z^{[2]} , A^{[2]}$$ where the column corresponds to the activation of each sample and the row corresponds to its subsequent node activation.
 
@@ -41,18 +42,18 @@ This is called $$W^{[1]}$$ as weights of the first hidden layer.
 > vertically the different indices in the matrix A corresponds to different hidden units.
 
 ### Justification
-![](nnRep7)
+![](https://drive.google.com/uc?id=1tL9uiiVOm6VgPbFmwAs9X3DkQuyXXUJ5)
 
 > When you took the different training examples and stacked them up in different columns, then the corresponding result is that you end up with the z's also stacked at the columns.
 
 > So on this slide, I've only justified that z1 equals w1x plus b1 is a correct vectorization of the first step of the four steps we have in the previous slide, but it turns out that a similar analysis allows you to show that the other steps also work on using a very similar logic.
 
-![](nnRep8)
+![](https://drive.google.com/uc?id=17Y_3KSBbrZkDMPLNLzvgAy-S64sDbDjj)
 > So this kind of shows that the different layers of a neural network are roughly doing the same thing or just doing the same computation over and over.
 
 
 ## Activation Functions
-![](nnRep9)
+![](https://drive.google.com/uc?id=1qLbIyEA1cxRJUkyExVdKVvkr5jwyI9Hv)
 - So far we are using sigmoid, but in some cases other functions can be a lot better.
 - Sigmoid can lead us to gradient decent problem where the updates are so low.
 - Sigmoid activation function range is [0,1]
@@ -195,6 +196,8 @@ Check the notes below for derivations.
 
 For vectorization just stack them horizontally like before and treat them as matrices and apply the same tricks as before.
 
+![](https://drive.google.com/uc?id=1ZH3-fLZszu92pNmyyzno2UJERyAKGP10)
+
 ## Random Initialization
 
 - In logistic regression it wasn't important to initialize the weights randomly, while in NN we have to initialize them randomly.
@@ -213,5 +216,6 @@ For vectorization just stack them horizontally like before and treat them as mat
   ```
 
 - We need small values because in sigmoid (or tanh), for example, if the weight is __too large you are more likely to end up even at the very start of training with very large values of Z__. Which __causes your tanh or your sigmoid activation function to be saturated__, thus __slowing down learning__. If you don't have any sigmoid or tanh activation functions throughout your neural network, this is less of an issue.
+  - These large values will cause the inputs of the tanh activation function to also be very large, which causes the gradients to be close to zero.  Which leads to slow small updates and creates a slower algorithm.
 
 - Constant 0.01 is alright for 1 hidden layer networks, but if the NN is deep this number can be changed but it will always be a small number.

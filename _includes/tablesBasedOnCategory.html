@@ -22,7 +22,7 @@
          <td><a href="{{ post.url | prepend: site.baseurl}}">{{post.title}}</a></td>
          <td>{% if post.summary %} {{ post.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
          <td>{{post.keywords}}</td>
-         <td>{{ post.date | date_to_string }}</td>
+         <td>{{ post.date | date: "%Y-%m-%d" }}</td>
       </tr>
       
       {% endif %}      
@@ -37,7 +37,7 @@
          <td><a href="{{ page.url | prepend: site.baseurl}}">{{page.title}}</a></td>
          <td>{% if page.summary %} {{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} No Summary {% endif %}</td>
          <td>{{page.keywords}}</td>
-         <td>{{ page.date | date_to_string }}</td>
+         <td>{{ page.date | date: "%Y-%m-%d" }}</td>
       </tr>
       
       {% endif %}      
