@@ -39,8 +39,32 @@ entries:
       url: /classes_coursera_nndp_notes.html
       output: web, pdf
 
+    - title: Jupyter Notebooks
+      url: /classes_coursera_nndp_jupyterNotebooks.html
+      output: web,pdf
+
     - title: Course Summary
       url: /classes_coursera_nndp_summary.html
+      output: web, pdf
+
+  - title: Improving DNN
+    output: web, pdf
+
+    folderitems: 
+    - title: Overview
+      url: /classes_coursera_tuningDNN_intro.html
+      output: web, pdf
+
+    - title: Notebooks
+      url: /classes_coursera_tuningDNN_notes.html
+      output: web, pdf
+
+    - title: Jupyter Notebooks
+      url: /classes_coursera_tuningDNN_jupyterNotebooks.html
+      output: web,pdf
+
+    - title: Course Summary
+      url: /classes_coursera_tuningDNN_summary.html
       output: web, pdf
 
   - title: Course Learning B

@@ -77,8 +77,7 @@ sidebar: coursera_sidebar
 
 
 ## Why deep representations?
-
-![](intuitiveApproach)
+![](https://drive.google.com/uc?id=1e623OKnRndZQuMkMQ_E6KpszuYH3BMOs)
 - Deep NN makes relations with data from simpler to complex. In each layer it tries to make a relation with the previous layer. E.g.:
 	
 	- 1) Face recognition application:  
@@ -98,7 +97,7 @@ sidebar: coursera_sidebar
 	- circuit theory = using logic gates
 	- example: generating XOR of each features
 		- > in order to compute this XOR function, the hidden layer will need to be exponentially large, because essentially, you need to exhaustively enumerate our 2 to the N possible configurations of the input bits that result in the exclusive OR being either 1 or 0.  You end up needing a hidden layer that is exponentially large in the number of bits.
-	- ![](circuitTheory)
+	- ![](https://drive.google.com/uc?id=1TFbz7MyGOor1JRLsY7Jas7jtmcwL5g3x)
 - When starting on an application don't start directly by dozens of hidden layers. Try the simplest solutions (e.g. Logistic Regression), then try the shallow neural network and so on.
 
 > over the last several years there has been a trend toward people finding that for some applications, very, very deep neural networks here with maybe many dozens of layers sometimes, can sometimes be the best model for a problem
@@ -106,9 +105,9 @@ sidebar: coursera_sidebar
 ## Building blocks of deep neural networks
 
 - Forward and back propagation for a layer l:
-  - ![Untitled](forward_backwardProp)
+  - ![](https://drive.google.com/uc?id=10L4hGW5qawevYbS1Ylm8kUFAwXbRbwFy)
 - Deep NN blocks:
-  - ![](diagramFlow)
+  - ![](https://drive.google.com/uc?id=1CWX7sspYwMAbUEPu8BIUlR40F7SWgUe8)
 
 ## Forward and Backward Propagation
 
@@ -170,7 +169,7 @@ DEEP LEARNING is an empirical process (trail and error)
 
 ## Analogy Between the Brain
 
-![](formulationCorrection)
+![](https://drive.google.com/uc?id=1-PSq11uVtxzcC9K82Qq308wfb6PS7BZv)
 - very loose analogy with biological neuron which is a cell in the brain 
 - node -> neuron
 - weights -> axon 
