@@ -127,10 +127,16 @@ description: "Intended as a documentation theme based on Jekyll for technical wr
 
 github: [metadata]
 
-plugins: ['jekyll/scholar']
+plugins: 
+  - jekyll/scholar
+  - jekyll-last-modified-at
 
 # the styles can be found here: https://github.com/citation-style-language/styles
 scholar:  
   style: _bibliography/ieee.csl
   bibliography: mybib.bib
   bibliography_template: bib
+
+# Optional. The default date format, used if none is specified in the tag.
+last-modified-at:
+    date-format: '%b %d, %Y'

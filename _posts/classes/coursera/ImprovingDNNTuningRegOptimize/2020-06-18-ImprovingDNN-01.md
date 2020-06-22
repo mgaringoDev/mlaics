@@ -182,20 +182,206 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 
 - In most cases Andrew Ng tells that he uses the L2 regularization.
 - The dropout regularization eliminates some neurons/weights on each iteration based on some probability.
-- A most common technique to implement dropout is called "Inverted dropout".
+	- > for each training example, you would train it using one of these neural based networks
+	- > imagine that because you're training a much smaller network on each example or maybe just give a sense for why you end up able to regularize the network, because these much smaller networks are being trained
+- A most common technique to implement dropout is called __"Inverted dropout"__.
 - Code for Inverted dropout:
 
   ```python
   keep_prob = 0.8   # 0 <= keep_prob <= 1
   l = 3  # this code is only for layer 3
-  # the generated number that are less than 0.8 will be dropped. 80% stay, 20% dropped
+  # the generated number that are less than 0.8 will be dropped. 
+  # 80% stay, 20% dropped
+  # works as well if the implementation is vectorized  
   d3 = np.random.rand(a[l].shape[0], a[l].shape[1]) < keep_prob
 
+
+  # these are the activations for that layer
+  # technically d3 is boolean but when multiplied it becomes 1/0 
   a3 = np.multiply(a3,d3)   # keep only the values in d3
 
   # increase a3 to not reduce the expected value of output
   # (ensures that the expected value of a3 remains the same) - to solve the scaling problem
+  # ex. z[4] = w[4]*a[3] + b[4]
+  # if 20% of a[3] is reduced then the expected value of z[4] is also reduced by that amount
+  # to increase by 20% then you increase by the prop factor so that the expected value of a[3] remains the same
+  # also this makes test time easier
   a3 = a3 / keep_prob       
   ```
-- Vector d[l] is used for forward and back propagation and is the same for them, but it is different for each iteration (pass) or training example.
-- At test time we don't use dropout. If you implement dropout at test time - it would add noise to predictions.
+- Vector d[l] is used for forward and back propagation and is the same for them, but it is __different for each iteration (pass) or training example__.
+- __At test time we don't use dropout__. 
+	- If you implement dropout at test time - it would add noise to predictions.
+
+## Understanding Dropout
+
+- In the previous video, the intuition was that dropout randomly knocks out units in your network. So it's as if on every iteration you're working with a smaller NN, and so using a smaller NN seems like it should have a regularizing effect.
+- intuition
+	- one unit can't rely on any one feature
+	- can't rely on any one feature, so have to spread out weights.
+	- shrinks the weights
+	- adaptive form of L2 reg	
+- It's possible to show that dropout has a similar effect to L2 regularization.
+	-  > L2 regularization applied to different ways can be a little bit different and even more adaptive to the scale of different inputs
+- __Dropout can have different `keep_prob` per layer__.
+- The input layer dropout has to be near 1 (or 1 - no dropout) because you don't want to eliminate a lot of features.
+- If you're more worried about some layers overfitting than others, you can set a lower `keep_prob` for some layers than others. The downside is, this gives you even more hyperparameters to search for using cross-validation. 
+	- for layers that have high connections you want to apply reg more so the probability should be higher.  For instance in the image below w[2] has higher number of weights so you want that to not overfit so you want to increase regularization.  While in places that you don't think the model will overfit you want the prop to be as high as possible.
+	- ![](dropoutKeepProb)
+	- this is similar to lambda in L2 reg
+- One other alternative might be to have some layers where you apply dropout and some layers where you don't apply dropout and then just have one hyperparameter, which is a `keep_prob` for the layers for which you do apply dropouts.
+- A lot of researchers are using dropout with Computer Vision (CV) because they have a very big input size and almost never have enough data, so overfitting is the usual problem. And dropout is a regularization technique to prevent overfitting.
+
+{{site.data.alerts.warning}}
+- > unless my algorithm is over-fitting, I wouldn't actually bother to use drop out. 
+- > used somewhat less often than other application areas
+	- > intuition doesn't always generalize I think to other disciplines
+{{site.data.alerts.end}}
+
+- A downside of dropout is that the cost function J is not well defined and it will be hard to debug (plot J by iteration).
+  - To solve that you'll need to turn off dropout, set all the `keep_prob`s to 1, and then run the code and check that it monotonically decreases J and then turn on the dropouts again.
+
+## Other regularization methods
+
+- **Data augmentation**:
+  - For example in a computer vision data:
+    - You can flip all your pictures horizontally this will give you m more data instances.
+    	- > training set is now a bit redundant this isn't as good as if you had collected an additional set of brand new independent examples
+    - You could also apply a random position and rotation to an image to get more data.
+  - For example in OCR, you can impose random rotations and distortions to digits/letters.
+  - New data obtained using this technique isn't as good as the real independent data, but still can be used as a regularization technique.
+
+- **Early stopping**:
+  - In this technique we plot the training set and the dev set cost together for each iteration. At some iteration the dev set cost will stop decreasing and will start increasing.
+  - We will pick the point at which the training set error and dev set error are best (lowest training cost with lowest dev cost).
+  - We will take these parameters as the best parameters.
+    - ![](earlyStopping)
+  - Andrew prefers to use L2 regularization instead of early stopping because this technique simultaneously tries to minimize the cost function and not to overfit which contradicts the orthogonalization approach (will be discussed further).
+  	- optimize cost function and not overfit are two separate tasks and should be tackled differently
+  	- while you optimize cost function you minimize `J` and when you try not to overfit you increase `generalizability` of the model
+  	- this concept of compartmentalizing each task is called `orthogonalizing approach`
+  - But its advantage is that you don't need to search a hyperparameter like in other regularization approaches (like `lambda` in L2 regularization).
+- **Model Ensembles**:
+  - Algorithm:
+    - Train multiple independent models.
+    - At test time average their results.
+  - It can get you extra 2% performance.
+  - It reduces the generalization error.
+  - You can use some snapshots of your NN at the training ensembles them and take the results.
+
+
+## Normalizing inputs
+
+- If you normalize your inputs this will speed up the training process a lot.
+- Normalization are going on these steps:
+  1. Get the mean of the training set: `mean = (1/m) * sum(x(i))`
+  2. Subtract the mean from each input: `X = X - mean`
+     - This makes your inputs centered around 0.
+  3. Get the variance of the training set: `variance = (1/m) * sum(x(i)^2)`
+  4. Normalize the variance. `X /= variance`
+- These steps should be applied to training, dev, and testing sets (but using mean and variance of the train set).
+	- use the values of the training set to the dev and test set when performing normalization so that you scale the train set the same way.  You want the dev and test go through the same way during your train set.
+![](normalizeInput)
+- Why normalize?
+  - If we __don't normalize the inputs our cost function will be deep and its shape will be inconsistent (elongated) then optimizing it will take a long time__.
+  	- if you features have various scales then it can be elongated.
+  		- a lot of steps to identify min
+  	- if normalized then cost function will be more symmetric
+  		- take larger steps  	
+  - But if we normalize it the opposite will occur. The shape of the cost function will be consistent (look more symmetric like circle in 2D example) and we can use a larger learning rate alpha - the optimization will be faster.
+ ![](normalizeVisual)
+
+## Vanishing / Exploding gradients
+
+- The Vanishing / Exploding gradients occurs when your derivatives become very small or very big.
+- To understand the problem, suppose that we have a deep neural network with number of layers L, and all the activation functions are **linear** and each `b = 0`
+  - Then:   
+    ```
+    Y' = W[L]W[L-1].....W[2]W[1]X
+    ```
+  - Then, if we have 2 hidden units per layer and x1 = x2 = 1, we result in:
+
+    ```
+    if W[l] = [1.5   0] 
+              [0   1.5] (l != L because of different dimensions in the output layer)
+    Y' = W[L] [1.5  0]^(L-1) X = 1.5^L 	# which will be very large
+              [0  1.5]
+    ```
+    ```
+    if W[l] = [0.5  0]
+              [0  0.5]
+    Y' = W[L] [0.5  0]^(L-1) X = 0.5^L 	# which will be very small
+              [0  0.5]
+    ```
+- The last example explains that the __activations (and similarly derivatives) will be decreased/increased exponentially as a function of number of layers__.
+- So If `W > I` (Identity matrix) the __activation and gradients will explode in a very deep network__.
+- And If `W < I` (Identity matrix) the __activation and gradients will vanish with a very deep network__.
+- Recently Microsoft trained 152 layers (ResNet)! which is a really big number. With such a deep neural network, if your activations or gradients increase or decrease exponentially as a function of L, then these values could get really big or really small. And this makes training difficult, especially if your gradients are exponentially smaller than L, then gradient descent will take tiny little steps. It will take a long time for gradient descent to learn anything.
+- There is a partial solution that doesn't completely solve this problem but it helps a lot - careful choice of how you initialize the weights (next video).
+
+
+## Weight Initialization for Deep Networks
+
+- A partial solution to the Vanishing / Exploding gradients in NN is better or more careful choice of the random initialization of weights
+- In a single neuron (Perceptron model): `Z = w1x1 + w2x2 + ... + wnxn`
+  - So if `n_x` is large we want `W`'s to be smaller to not explode the cost.
+- So it turns out that we need the variance which equals `1/n_x` to be the range of `W`'s
+- So lets say when we initialize `W`'s like this (better to use with `tanh` activation):   
+  ```
+  np.random.rand(shape) * np.sqrt(1/n[l-1]) 
+  ```
+  or variation of this (Bengio et al.):   
+  ```  
+  np.random.rand(shape) * np.sqrt(2/(n[l-1] + n[l]))
+  ```
+  >  it turns out that sampling a Gaussian random variable and then multiplying it by a square root of this, that sets the variance to be quoted this way, to be 2 over n
+- Setting initialization part inside sqrt to `2/n[l-1]` for `ReLU` is better:   
+  ```
+  np.random.rand(shape) * np.sqrt(2/n[l-1])
+  ```
+- Number 1 or 2 in the numerator can also be a hyperparameter to tune (but not the first to start with)
+	- this can be tuned by adding a multiplier to the numerator and tuning it and seeing the performance
+- This is one of the best way of partially solution to Vanishing / Exploding gradients (ReLU + Weight Initialization with variance) which will help gradients not to vanish/explode too quickly
+- The initialization in this video is called "He Initialization / Xavier Initialization" and has been published in 2015 paper.
+
+- Relu activation function
+	- $$\sqrt{\frac{2}{n^{l-1}}}$$
+	- $$\sqrt{\frac{2}{n^{l-1}+n^l}}$$ # bengio
+- tanh activation function
+	- - $$\sqrt{\frac{12}{n^{l-1}}}$$ # xavier
+
+## Numerical approximation of gradients
+
+- There is an technique called gradient checking which tells you if your implementation of backpropagation is correct.
+- There's a numerical way to calculate the derivative:   
+  ![](Images/03-_Numerical_approximation_of_gradients.png)
+- __Gradient checking approximates the gradients and is very helpful for finding the errors in your backpropagation implementation but it's slower than gradient descent (so use only for debugging)__.
+
+
+## Gradient checking
+- Implementation of this is very simple.
+- Gradient checking:
+  - First take `W[1],b[1],...,W[L],b[L]` and reshape into one big vector (`theta`)
+  - The cost function will be `J(theta)`
+  - Then take `dW[1],db[1],...,dW[L],db[L]` into one big vector (`d_theta`)
+  - **Algorithm**:   
+    ```
+    eps = 10^-7   # small number
+    for i in len(theta):
+      d_theta_approx[i] = (J(theta1,...,theta[i] + eps) -  J(theta1,...,theta[i] - eps)) / 2*eps
+    ```  
+  - Finally we evaluate this formula `(||d_theta_approx - d_theta||) / (||d_theta_approx||+||d_theta||)` (`||` - Euclidean vector norm) and check (with eps = 10^-7):
+    - __if it is < 10^-7  - great__, very likely the backpropagation implementation is correct
+    - __if around 10^-5   - can be OK__, but need to inspect if there are no particularly big values in `d_theta_approx - d_theta` vector
+    - __if it is >= 10^-3 - bad__, probably there is a bug in backpropagation implementation
+    	- check which value of `i` is correct and then based on that `i` you can go backwards
+
+## Gradient checking implementation notes
+- Don't use the gradient checking algorithm at training time because it's very slow.
+	- __Use gradient checking only for debugging__.
+- If algorithm fails grad check, look at components to try to identify the bug.
+- Don't forget to add `lamda/(2m) * sum(W[l])` to `J` if you are using L1 or L2 regularization.
+- __Gradient checking doesn't work__ with dropout because J is not consistent. 
+  - You can first turn off dropout (set `keep_prob = 1.0`), run gradient checking and then turn on dropout again.
+  - > turns out that dropout can be viewed as optimizing some cost function J, but it's cost function J defined by summing over all exponentially large subsets of nodes they could eliminate in any iteration
+  - > the cost function J is very difficult to compute, and you're just sampling the cost function every time you eliminate different random subsets in those we use dropout
+- Run gradient checking at random initialization and train the network for a while maybe there's a bug which can be seen when w's and b's become larger (further from 0) and can't be seen on the first iteration (when w's and b's are very small).

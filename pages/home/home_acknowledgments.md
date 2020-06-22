@@ -25,3 +25,5 @@ toc: false
 	- [Walk through directory](https://stackoverflow.com/questions/18394147/recursive-sub-folder-search-and-return-files-in-a-list-python)
 - Adding Alerts
 	- [Jekyll Documentation Theme](https://github.com/tomjoht/documentation-theme-jekyll)
+- Adding last modified
+	- [jekyll-last-modified-at](https://github.com/gjtorikian/jekyll-last-modified-at)
