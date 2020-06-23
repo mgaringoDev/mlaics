@@ -46,7 +46,7 @@ sidebar: coursera_sidebar
 	- If your model is overfitting then it has a "high variance"
 	- Your model will be alright if you balance the Bias / Variance
 	- For more:
-	- ![](biasVariance)
+	- ![](https://drive.google.com/uc?id=1_o-8J9TgML5FBJSV1sz5NovYhGRoqidQ)
 	- Higher dimension it is very hard to tell if you have under or overfitting
 - Another idea to get the bias /  variance if you don't have a 2D plotting mechanism:
 	- __High variance (overfitting)__ for example:	
@@ -72,7 +72,7 @@ sidebar: coursera_sidebar
 - bais problem comes from training set error
 - variance problem comes from dev set error
 
-![](highBiasHighVar)
+![](https://drive.google.com/uc?id=1LCGKHHbhAYhXYn1n243ZGJVij8f2nIVC)
 - in higher dimensional inputs you often see things like this even though in 2D it looks too contrived 
 
 ## Basic Recipe for Machine Learning
@@ -167,15 +167,15 @@ Here are some intuitions:
   - Intuition 1:
      - If `lambda` is too large - a lot of w's will be close to zeros which will make the NN simpler (you can think of it as it would behave closer to logistic regression).     	
      - If `lambda` is good enough it will just reduce some weights that makes the neural network overfit.
-     ![](regIntuition)
+     ![](https://drive.google.com/uc?id=1yotA-DhpHW4gvB5E7vrBdjOLWGr91UnI)
   - Intuition 2 (with _tanh_ activation function):
      - If `lambda` is too large, w's will be small (close to zero) - will use the linear part of the _tanh_ activation function, so we will go from non linear activation to _roughly_ linear which would make the NN a _roughly_ linear classifier.
      - If `lambda` good enough it will just make some of _tanh_ activations _roughly_ linear which will prevent overfitting.
-     ![](regIntuitionTanh)
+     ![](https://drive.google.com/uc?id=1waBeWXTlDDMbB_Wl6lNu2U_OakkUM2Ji)
 
 {{site.data.alerts.warning}}
 _**Implementation tip**_: if you implement gradient descent, one of the steps to debug gradient descent is to plot the cost function J as a function of the number of iterations of gradient descent and you want to see that the cost function J decreases **monotonically** after every iteration of gradient descent with regularization. If you plot the old definition of J (no regularization) then you might not see it decrease monotonically.
-![](decreaseMonotonicallyJ)
+![](![](https://drive.google.com/uc?id=1waBeWXTlDDMbB_Wl6lNu2U_OakkUM2Ji))
 {{site.data.alerts.end}}
 
 ## Dropout Regularization
@@ -226,7 +226,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
 - The input layer dropout has to be near 1 (or 1 - no dropout) because you don't want to eliminate a lot of features.
 - If you're more worried about some layers overfitting than others, you can set a lower `keep_prob` for some layers than others. The downside is, this gives you even more hyperparameters to search for using cross-validation. 
 	- for layers that have high connections you want to apply reg more so the probability should be higher.  For instance in the image below w[2] has higher number of weights so you want that to not overfit so you want to increase regularization.  While in places that you don't think the model will overfit you want the prop to be as high as possible.
-	- ![](dropoutKeepProb)
+	- ![](https://drive.google.com/uc?id=1_vPSL35bbNqLUGr7rdbiVAUjx5OPfmzu)
 	- this is similar to lambda in L2 reg
 - One other alternative might be to have some layers where you apply dropout and some layers where you don't apply dropout and then just have one hyperparameter, which is a `keep_prob` for the layers for which you do apply dropouts.
 - A lot of researchers are using dropout with Computer Vision (CV) because they have a very big input size and almost never have enough data, so overfitting is the usual problem. And dropout is a regularization technique to prevent overfitting.
@@ -254,7 +254,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   - In this technique we plot the training set and the dev set cost together for each iteration. At some iteration the dev set cost will stop decreasing and will start increasing.
   - We will pick the point at which the training set error and dev set error are best (lowest training cost with lowest dev cost).
   - We will take these parameters as the best parameters.
-    - ![](earlyStopping)
+    - ![](![](https://drive.google.com/uc?id=1_vPSL35bbNqLUGr7rdbiVAUjx5OPfmzu))
   - Andrew prefers to use L2 regularization instead of early stopping because this technique simultaneously tries to minimize the cost function and not to overfit which contradicts the orthogonalization approach (will be discussed further).
   	- optimize cost function and not overfit are two separate tasks and should be tackled differently
   	- while you optimize cost function you minimize `J` and when you try not to overfit you increase `generalizability` of the model
@@ -280,7 +280,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   4. Normalize the variance. `X /= variance`
 - These steps should be applied to training, dev, and testing sets (but using mean and variance of the train set).
 	- use the values of the training set to the dev and test set when performing normalization so that you scale the train set the same way.  You want the dev and test go through the same way during your train set.
-![](normalizeInput)
+![](https://drive.google.com/uc?id=1TGiMQbVJPAGOBxLExpRAjfskVBfZrA_X)
 - Why normalize?
   - If we __don't normalize the inputs our cost function will be deep and its shape will be inconsistent (elongated) then optimizing it will take a long time__.
   	- if you features have various scales then it can be elongated.
@@ -288,7 +288,7 @@ _**Implementation tip**_: if you implement gradient descent, one of the steps to
   	- if normalized then cost function will be more symmetric
   		- take larger steps  	
   - But if we normalize it the opposite will occur. The shape of the cost function will be consistent (look more symmetric like circle in 2D example) and we can use a larger learning rate alpha - the optimization will be faster.
- ![](normalizeVisual)
+ ![](https://drive.google.com/uc?id=1_vPSL35bbNqLUGr7rdbiVAUjx5OPfmzu)
 
 ## Vanishing / Exploding gradients
 
