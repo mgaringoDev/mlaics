@@ -67,6 +67,26 @@ entries:
       url: /classes_coursera_tuningDNN_summary.html
       output: web, pdf
 
+  - title: Machine Learning Strategies
+    output: web, pdf
+
+    folderitems: 
+    - title: Overview
+      url: /classes_coursera_mlStrat_intro.html
+      output: web, pdf
+
+    - title: Notebooks
+      url: /classes_coursera_mlStrat_notes.html
+      output: web, pdf
+
+    - title: Jupyter Notebooks
+      url: /classes_coursera_mlStrat_jupyterNotebooks.html
+      output: web,pdf
+
+    - title: Course Summary
+      url: /classes_coursera_mlStrat_summary.html
+      output: web, pdf
+
   - title: Course Learning B
     output: web, pdf
 
