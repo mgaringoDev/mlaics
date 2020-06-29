@@ -67,3 +67,10 @@ Need to look at the following feature encoding things
 - [Outline of machine learning wikipedia page](https://en.wikipedia.org/wiki/Outline_of_machine_learning#Machine_learning_algorithms)
 - [Machine learning algo wikipedia page](https://en.wikipedia.org/wiki/Category:Machine_learning_algorithms)
 - [Springer Article](http://www.realtechsupport.org/UB/CM/algorithms/Wu_10Algorithms_2008.pdf)
+
+# Statistical Correlation Stuff
+
+- [pingouin](https://pingouin-stats.org/)
+	- Pingouin is designed for users who want simple yet exhaustive stats functions.
+	- Examples can be found [here](https://raphaelvallat.com/correlation.html)
+- [Modelling Correlations](https://risk-engineering.org/static/PDF/slides-correlations.pdf)
