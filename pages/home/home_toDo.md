@@ -9,6 +9,8 @@ toc: false
 {{site.data.alerts.todo}}
 
 - [ ] Daniel Bourke [video](https://www.youtube.com/watch?v=IMMDPzECrf0)
+	- [ ] [2020 Machine Learning Roadmap](https://www.youtube.com/watch?v=pHiMN_gy9mk)
+		- check the notes on "classes_youtube_danielBourkeRoadMap.html"
 	- [ ] Step 1 - Learn Python, data science tools and machine learning concepts
 		- [ ] [Elements of AI](https://www.elementsofai.com/)
 		- [ ] [Python for Everybody on Coursera](https://bit.ly/pythoneverybodycoursera)
