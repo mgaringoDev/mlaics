@@ -8,6 +8,9 @@ toc: false
 ---
 {{site.data.alerts.todo}}
 
+- [ ] Convert jupyter notebooks to -html
+	- https://davistownsend.github.io/blog/PlotlyBloggingTutorial/
+	
 - [ ] Daniel Bourke [video](https://www.youtube.com/watch?v=IMMDPzECrf0)
 	- [ ] [2020 Machine Learning Roadmap](https://www.youtube.com/watch?v=pHiMN_gy9mk)
 		- check the notes on "classes_youtube_danielBourkeRoadMap.html"
