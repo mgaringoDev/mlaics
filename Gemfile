@@ -21,4 +21,5 @@ gem 'jekyll-scholar', '5.16.0',  group: :jekyll_plugins
 # It can be found here:https://github.com/gjtorikian/jekyll-last-modified-at
 group :jekyll_plugins do
   gem "jekyll-last-modified-at"
+  gem "jekyll-diagrams"
 end

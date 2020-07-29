@@ -130,6 +130,7 @@ github: [metadata]
 plugins: 
   - jekyll/scholar
   - jekyll-last-modified-at
+  - jekyll-diagrams
 
 # the styles can be found here: https://github.com/citation-style-language/styles
 scholar:  
