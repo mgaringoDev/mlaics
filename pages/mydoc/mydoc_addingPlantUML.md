@@ -8,6 +8,11 @@ folder: mydoc
 pdfFile: http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
 ---
 
+{{site.data.alerts.warning}}
+
+- Some functionalities may not work because need to install [GraphVis](http://graphviz.org/download/) and also follow the installation [here](https://bobswift.atlassian.net/wiki/spaces/GVIZ/pages/20971549/How+to+install+Graphviz+software) to add it to the system variables.
+
+{{site.data.alerts.end}}
 ## Adding Simple Graphs
 To add [PlantUML charts](https://plantuml.com/) all you have to do is place the following set of liquid code in your md file.  For more information go to the repo [here](https://github.com/zhustec/jekyll-diagrams).
 
@@ -125,5 +130,4 @@ The following non-UML diagrams are also supported:
 
 
 ## Live Editor
-The live editor can be found [here](http://www.plantuml.com/plantuml/umla/PL5BRi8m4Dtx5BCa6mwGB8g4rAex12Umd1UmC7Ow7XTn-yOsZb1PPJBlepVFkoYQ9TsSAeFgzywQwmdywo3RY_QZmn4_2L4stQ1wZplD-en1sOasXsNQ1d-2IMpbiR_0N3kI2pnjX1CwHTG_IT_U5WkYhBJnC_1Ty_ZH-3vaTkPpC8YHJF32mSKigQAyiJw1vagn_lmc9ueIvZB2ZtPIgzh6GuYo2Xw8JT4YPhn698ABQAwld2-ibEh_2XwN5RZY5Qqsaru-dQghqjmOY35QXdbBr3UWdJaKbmLv2gVQtFib_RDJulfYW_f_HryJbYSamMrsMh2cRG5BWxlb9ztS7m00).  Just copy paste the content in the mermaid liquid tags.
-
+The official live editor can be found [here](http://www.plantuml.com/plantuml/umla/PL5BRi8m4Dtx5BCa6mwGB8g4rAex12Umd1UmC7Ow7XTn-yOsZb1PPJBlepVFkoYQ9TsSAeFgzywQwmdywo3RY_QZmn4_2L4stQ1wZplD-en1sOasXsNQ1d-2IMpbiR_0N3kI2pnjX1CwHTG_IT_U5WkYhBJnC_1Ty_ZH-3vaTkPpC8YHJF32mSKigQAyiJw1vagn_lmc9ueIvZB2ZtPIgzh6GuYo2Xw8JT4YPhn698ABQAwld2-ibEh_2XwN5RZY5Qqsaru-dQghqjmOY35QXdbBr3UWdJaKbmLv2gVQtFib_RDJulfYW_f_HryJbYSamMrsMh2cRG5BWxlb9ztS7m00) but use this [one](https://plantuml-editor.kkeisuke.com/#) because it has the capabilities of command execution and sublime shortcuts.  
